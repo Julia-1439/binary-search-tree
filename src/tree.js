@@ -42,6 +42,37 @@ class Tree {
     return root;
   }
 
+  insert(value) {
+    if (this.root === null) {
+      this.root = new Node(value);
+      return;
+    }
+
+    let curr = this.root;
+    while (true) { // will terminate upon insertion or finding `value` is a duplicate
+      if (value < curr.value) {
+        if (curr.left) {
+          curr = curr.left;
+        } 
+        else {
+          curr.left = new Node(value);
+          break;
+        }
+      }
+      else if (value > curr.value) {
+        if (curr.right) 
+          curr = curr.right;
+        else {
+          curr.right = new Node(value);
+          break;
+        }
+      }
+      else {
+        throw new Error("This value already exists in the tree.");
+      }
+    }
+  }
+
   toString() {
     prettyPrint(this.root, ":");
   }
