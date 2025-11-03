@@ -1,0 +1,26 @@
+{
+  "name": "binary-search-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./src/index.js",
+    "start": "node ./src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Julia-1439/binary-search-tree.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Julia-1439/binary-search-tree/issues"
+  },
+  "homepage": "https://github.com/Julia-1439/binary-search-tree#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
