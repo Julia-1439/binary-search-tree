@@ -289,9 +289,42 @@ class Tree {
     cb(currNode);
   }
 
+  /**
+   * The number of edges in the longest path from the node containing `value`
+   * to a leaf node. 
+   * @param {Number} value 
+   * @returns {Number}
+   */
+  height(value) {
+    let foundNode = this.find(value);
+    if (foundNode === null) {
+      return null;
+    }
+
+    return this.#heightRecur(foundNode);
+  }
+
+  #heightRecur(currNode) {
+    // Stopping case: at a leaf node
+    if (currNode.left === null && currNode.right === null) {
+      return 0;
+    }
+
+    let leftHeight = 0;
+    let rightHeight = 0;
+    if (currNode.left) 
+      leftHeight = 1 + this.#heightRecur(currNode.left);
+    if (currNode.right) 
+      rightHeight = 1 + this.#heightRecur(currNode.right);
+
+    return Math.max(leftHeight, rightHeight);
+  }
+
   toString() {
     prettyPrint(this.root, ":");
   }
 }
 
-export { Tree };
+export { 
+  Tree,
+};

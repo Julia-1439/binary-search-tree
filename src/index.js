@@ -123,3 +123,23 @@ T.preOrderForEach((node) => console.log(node.value));
 console.log("-------------------------");
 T.inOrderForEach((node) => console.log(node.value));
 console.log("-------------------------");
+
+console.log(T.toString());
+
+// height of leaf node
+console.log("Height of leaf node:", T.height(3));
+
+// height of mid-level nodes
+console.log("Height of mid-level nodes:", T.height(4), T.height(23), T.height(1));
+
+// height of root node
+console.log("Height of root node:", T.height(7));
+
+// height of root node with slight imbalance
+T.insert(9999);
+console.log(T.toString());
+console.log("Height of root node, modified:", T.height(7));
+
+// height of non-existent node
+console.log("Height of non-existent node:", T.height(-9999));
+
