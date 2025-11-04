@@ -204,3 +204,64 @@ export function runTestSet1() {
   console.log(T.toString());
   console.log("Rebalanced. Is balanced:", T.isBalanced());
 }
+
+// Supplied by the project specs
+export function runTestSet2() {
+  const randNums = Array.from({ length: 50 }, () =>
+    Math.floor(Math.random() * 100)
+  );
+  const T = new Tree(randNums);
+
+  console.log(T.toString());
+  let size = 0;
+  T.inOrderForEach(() => ++size);
+  console.log("Size:", size);
+  console.log("Is balanced:", T.isBalanced());
+
+  let s = "";
+  T.inOrderForEach((node) => (s += `${node.value} `));
+  console.log("In-order:", s);
+  s = "";
+  T.preOrderForEach((node) => (s += `${node.value} `));
+  console.log("Pre-order:", s);
+  s = "";
+  T.postOrderForEach((node) => (s += `${node.value} `));
+  console.log("Post-order:", s);
+  s = "";
+  T.levelOrderForEachIterative((node) => (s += `${node.value} `));
+  console.log("Level-order iterative:", s);
+  s = "";
+  T.levelOrderForEachRecur((node) => (s += `${node.value} `));
+  console.log("Level-order recursive:", s);
+
+
+  let numsOver100 = Array.from(
+    { length: 10 },
+    () => 100 + Math.floor(Math.random() * 100)
+  ); // nums between 100 and 199
+  numsOver100 = [...new Set(numsOver100)]; // remove duplicates
+  console.log(numsOver100);
+  numsOver100.forEach((num) => T.insert(num));
+  console.log(T.toString());
+  console.log("Inserted new nums. Is tree balanced?", T.isBalanced());
+  T.rebalance();
+  console.log("Rebalanced. Is tree balanced?", T.isBalanced());
+  console.log(T.toString());
+
+  s = "";
+  T.inOrderForEach((node) => (s += `${node.value} `));
+  console.log("In-order:", s);
+  s = "";
+  T.preOrderForEach((node) => (s += `${node.value} `));
+  console.log("Pre-order:", s);
+  s = "";
+  T.postOrderForEach((node) => (s += `${node.value} `));
+  console.log("Post-order:", s);
+  s = "";
+  T.levelOrderForEachIterative((node) => (s += `${node.value} `));
+  console.log("Level-order iterative:", s);
+  s = "";
+  T.levelOrderForEachRecur((node) => (s += `${node.value} `));
+  console.log("Level-order recursive:", s);
+
+}
