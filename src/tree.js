@@ -402,6 +402,16 @@ class Tree {
     return isBalanced;
   }
 
+  rebalance() {
+    const currNodes = [];
+
+    this.inOrderForEach((node) => {
+      currNodes.push(node.value);
+    });
+
+    this.root = this.buildTree(currNodes);
+  }
+
   toString() {
     prettyPrint(this.root, ":");
   }

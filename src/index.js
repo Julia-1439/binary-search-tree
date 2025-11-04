@@ -173,9 +173,20 @@ T.insert(-3);
 console.log(T.toString());
 console.log("Is balanced:", T.isBalanced());
 
+// rebalance
+T.rebalance();
+console.log(T.toString())
+console.log("Rebalanced. Is balanced:", T.isBalanced());
+
 T = new Tree([1]);
 console.log("Singleton tree balanced:", T.isBalanced());
 
 T.insert(2);
 T.insert(3);
-console.log("Tree imbalanced (became a linked list):", T.isBalanced());
+console.log(T.toString());
+console.log("Tree balanced (became a linked list):", T.isBalanced());
+
+// rebalancing
+T.rebalance();
+console.log(T.toString());
+console.log("Rebalanced. Is balanced:", T.isBalanced());
