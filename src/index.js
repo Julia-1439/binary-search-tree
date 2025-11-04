@@ -143,3 +143,18 @@ console.log("Height of root node, modified:", T.height(7));
 // height of non-existent node
 console.log("Height of non-existent node:", T.height(-9999));
 
+// depth of leaf nodes
+console.log("Depth of leaf node:", T.depth(5));
+console.log("Depth of leaf node:", T.depth(9999));
+
+// depth of mid-level nodes
+console.log("Depth of mid-level node:", T.depth(8));
+console.log("Depth of mid-level node:", T.depth(1));
+
+// depth of root node
+console.log("Depth of root node:", T.depth(7));
+
+// depth of non-existent nodes
+console.log("Depth of non-existent node:", T.depth(10));
+console.log("Depth of non-existent node:", T.depth(10000));
+

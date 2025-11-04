@@ -320,6 +320,48 @@ class Tree {
     return Math.max(leftHeight, rightHeight);
   }
 
+  /**
+   * 
+   * @param {Number} value 
+   * @returns {Number} the number of edges from the root to the node containing
+   * `value`. If `value` does not exist, returns null
+   */
+  depth(value) {
+    if (this.root === null) {
+      return null;
+    }
+
+    let depth = 0;
+    let currNode = this.root;
+    while (true) { // Iterates until node is found or concluded it does not exist
+      if (value < currNode.value) {
+        if (currNode.left) {
+          currNode = currNode.left;
+          depth++;
+        }
+        else { 
+          depth = null;
+          break;   
+        }
+      }
+      else if (value > currNode.value) {
+        if (currNode.right) {
+          currNode = currNode.right;
+          depth++;
+        }
+        else {
+          depth = null;
+          break;
+        }
+      }
+      else {
+        break;
+      }
+    }
+
+    return depth;
+  }
+
   toString() {
     prettyPrint(this.root, ":");
   }
