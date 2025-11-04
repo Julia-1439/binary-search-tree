@@ -170,6 +170,71 @@ class Tree {
     }
   }
 
+  /**
+   * Traverse the tree in breadth-first level order, visiting each node by 
+   * calling a callback `cb` function on them. Implemented via iteration.
+   * @param {Function} cb with a single Node parameter
+   */
+  levelOrderForEachIterative(cb) {
+    if (typeof(cb) !== "function") {
+      throw new Error("A callback function is required.");
+    }
+
+    if (this.root === null) {
+      return;
+    }
+
+    const queue = []; // "we have queue at home"
+    queue.push(this.root);
+    while (queue.length !== 0) {
+      const curr = queue.shift();
+      cb(curr);
+      if (curr.left) queue.push(curr.left);
+      if (curr.right) queue.push(curr.right);
+    }
+  }
+
+  /**
+   * Traverse the tree in breadth-first level order, visiting each node by 
+   * calling a callback `cb` function on them. Implemented via recursion; the
+   * iterative solution is above.
+   * @param {Function} cb with a single Node parameter
+   */
+  levelOrderForEachRecur(cb) {
+    if (typeof(cb) !== "function") {
+      throw new Error("A callback function is required.");
+    }
+
+    if (this.root === null) {
+      return;
+    }
+
+    this.#levelOrderForEachRecurHelper([this.root], cb);
+  }
+
+  /**
+   * Helper function to `levelOrderForEachRecur`. Each call processes a level of
+   * the tree. 
+   * @param {Array{Node}} level 
+   * @param {Function} cb 
+   * @returns {undefined}
+   */
+  #levelOrderForEachRecurHelper(level, cb) {
+    // Stopping case: finished the final layer
+    if (level.length === 0) {
+      return;
+    }
+
+    const nextLevel = [];
+    level.forEach((node) => {
+      cb(node);
+      if (node.left) nextLevel.push(node.left);
+      if (node.right) nextLevel.push(node.right);
+    });
+
+    this.#levelOrderForEachRecurHelper(nextLevel, cb);
+  }
+
   toString() {
     prettyPrint(this.root, ":");
   }

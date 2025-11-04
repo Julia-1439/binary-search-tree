@@ -102,3 +102,13 @@ console.log(T.toString());
 console.log("Find non-existent value 6:", T.find(6));
 console.log("Find leaf node 3:", T.find(3));
 console.log("Find parent node 324:", T.find(324));
+
+T.levelOrderForEachIterative((node) => {
+  console.log(node.value);
+});
+
+console.log("-------------------------");
+
+T.levelOrderForEachRecur((node) => {
+  console.log(node.value);
+});
