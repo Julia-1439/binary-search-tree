@@ -291,7 +291,7 @@ class Tree {
 
   /**
    * The number of edges in the longest path from the node containing `value`
-   * to a leaf node. 
+   * to a leaf node. Runtime is O(h), or O(log n) if the tree is balanced.
    * @param {Number} value 
    * @returns {Number}
    */
@@ -360,6 +360,46 @@ class Tree {
     }
 
     return depth;
+  }
+
+  isBalanced() {
+    if (this.root === null) {
+      return true;
+    }
+
+    return this.#isBalancedRecur(this.root);
+  }
+
+  /**
+   * Probably quadratic runtime
+   * @param {Node} currNode 
+   * @returns {Boolean}
+   */
+  #isBalancedRecur(currNode) {
+    if (!currNode.left && !currNode.right) {
+      return true;
+    }
+
+    let leftHeight = 0;
+    let rightHeight = 0;
+    let leftBalanced = true;
+    let rightBalanced = true;
+
+    if (currNode.left) {
+      leftHeight = 1 + this.#heightRecur(currNode.left);
+      leftBalanced = this.#isBalancedRecur(currNode.left);
+    }
+    if (currNode.right) {
+      rightHeight = 1 + this.#heightRecur(currNode.right); 
+      rightBalanced = this.#isBalancedRecur(currNode.right);
+    }
+    
+    const isBalanced = 
+      Math.abs(leftHeight - rightHeight) <= 1 &&
+      leftBalanced && 
+      rightBalanced;
+    
+    return isBalanced;
   }
 
   toString() {

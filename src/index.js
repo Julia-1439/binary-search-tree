@@ -158,3 +158,24 @@ console.log("Depth of root node:", T.depth(7));
 console.log("Depth of non-existent node:", T.depth(10));
 console.log("Depth of non-existent node:", T.depth(10000));
 
+// is balanced
+console.log(T.toString());
+console.log("Is balanced:", T.isBalanced());
+
+// imbalance
+T.insert(10000);
+console.log(T.toString());
+console.log("Is balanced:", T.isBalanced());
+
+// heights are in line but still imbalanced
+T.insert(-2);
+T.insert(-3);
+console.log(T.toString());
+console.log("Is balanced:", T.isBalanced());
+
+T = new Tree([1]);
+console.log("Singleton tree balanced:", T.isBalanced());
+
+T.insert(2);
+T.insert(3);
+console.log("Tree imbalanced (became a linked list):", T.isBalanced());
