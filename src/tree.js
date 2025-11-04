@@ -143,6 +143,33 @@ class Tree {
     return currNode;
   }
 
+  find(value) {
+    return this.#findRecur(this.root, value);
+  }
+
+  /**
+   * 
+   * @param {Node} currNode 
+   * @param {Number} value 
+   * @returns {Node | null} the Node containing value or null if not found
+   */
+  #findRecur(currNode, value) {
+    // Stopping case: did not find the node - unravel all the way back up
+    if (currNode === null) {
+      return currNode;
+    }
+
+    if (value < currNode.value) {
+      return this.#findRecur(currNode.left, value);
+    }
+    else if (value > currNode.value) {
+      return this.#findRecur(currNode.right, value);
+    }
+    else { // Stopping case: found a match - unravel all the way back up
+      return currNode;
+    }
+  }
+
   toString() {
     prettyPrint(this.root, ":");
   }

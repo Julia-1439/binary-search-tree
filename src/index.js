@@ -89,3 +89,16 @@ T.insert(5);
 console.log("Insert element (singleton tree):", T.toString());
 T.remove(5);
 console.log("Remove element from singleton tree:", T.toString());
+
+// find on empty tree
+console.log("Find on empty tree:", T.find(6));
+
+T.insert(8);
+console.log("Find on singleton tree:", T.find(8));
+
+arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 0, -1];
+T = new Tree(arr);
+console.log(T.toString());
+console.log("Find non-existent value 6:", T.find(6));
+console.log("Find leaf node 3:", T.find(3));
+console.log("Find parent node 324:", T.find(324));
