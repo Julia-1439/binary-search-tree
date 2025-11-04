@@ -112,3 +112,14 @@ console.log("-------------------------");
 T.levelOrderForEachRecur((node) => {
   console.log(node.value);
 });
+
+arr = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324, 0, -1];
+T = new Tree(arr);
+console.log(T.toString());
+
+T.postOrderForEach((node) => console.log(node.value));
+console.log("-------------------------");
+T.preOrderForEach((node) => console.log(node.value));
+console.log("-------------------------");
+T.inOrderForEach((node) => console.log(node.value));
+console.log("-------------------------");

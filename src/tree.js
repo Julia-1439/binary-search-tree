@@ -235,6 +235,60 @@ class Tree {
     this.#levelOrderForEachRecurHelper(nextLevel, cb);
   }
 
+  inOrderForEach(cb) {
+    if (typeof(cb) !== "function") {
+      throw new Error("A callback function is required.");
+    }
+
+    this.#inOrderForEachRecur(this.root, cb);
+  }
+
+  #inOrderForEachRecur(currNode, cb) {
+    if (currNode === null) {
+      return;
+    }
+
+    this.#inOrderForEachRecur(currNode.left, cb);
+    cb(currNode);
+    this.#inOrderForEachRecur(currNode.right, cb);
+  }
+
+  preOrderForEach(cb) {
+    if (typeof(cb) !== "function") {
+      throw new Error("A callback function is required.");
+    }
+
+    this.#preOrderForEachRecur(this.root, cb);
+  }
+
+  #preOrderForEachRecur(currNode, cb) {
+    if (currNode === null) {
+      return;
+    }
+
+    cb(currNode);
+    this.#preOrderForEachRecur(currNode.left, cb);
+    this.#preOrderForEachRecur(currNode.right, cb);
+  }
+
+  postOrderForEach(cb) {
+    if (typeof(cb) !== "function") {
+      throw new Error("A callback function is required.");
+    }
+
+    this.#postOrderForEachRecur(this.root, cb);
+  }
+
+  #postOrderForEachRecur(currNode, cb) {
+    if (currNode === null) {
+      return;
+    }
+
+    this.#postOrderForEachRecur(currNode.left, cb);
+    this.#postOrderForEachRecur(currNode.right, cb);
+    cb(currNode);
+  }
+
   toString() {
     prettyPrint(this.root, ":");
   }
